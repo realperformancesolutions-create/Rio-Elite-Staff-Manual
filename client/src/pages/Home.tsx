@@ -236,6 +236,9 @@ export default function Home() {
     setDownloadProgress(0);
     try {
       await downloadManualPdf((pct) => setDownloadProgress(pct));
+    } catch (err) {
+      console.error("PDF generation error:", err);
+      alert("PDF generation failed: " + String(err));
     } finally {
       setDownloading(false);
       setDownloadProgress(0);
