@@ -458,6 +458,27 @@ function renderBlock(
       break;
     }
 
+    case "two_col": {
+      y = checkPage(10);
+      const colW2 = (CONTENT_W - 6) / 2;
+      // Left cell
+      doc.setFillColor(...LIGHT_GOLD);
+      doc.rect(MARGIN_L, y - 3, colW2, 9, "F");
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8.5);
+      doc.setTextColor(...BLACK);
+      doc.text(block.left, MARGIN_L + 3, y + 2);
+      // Right cell
+      doc.setFillColor(245, 245, 240);
+      doc.rect(MARGIN_L + colW2 + 6, y - 3, colW2, 9, "F");
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.setTextColor(...DARK);
+      doc.text(block.right, MARGIN_L + colW2 + 9, y + 2);
+      y += 10;
+      break;
+    }
+
     case "steps": {
       for (const step of block.items) {
         const descLines = wrapText(doc, step.desc, MARGIN_L + 16, CONTENT_W - 16, 9);
