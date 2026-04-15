@@ -153,19 +153,19 @@
   }
 
   .nav-item-active {
-    background: oklch(0.17 0.005 60);
+    background: oklch(0.22 0.008 60);
     color: oklch(1 0 0);
     border-left: 3px solid oklch(0.78 0.16 85);
   }
 
   .nav-item {
-    color: oklch(0.80 0.01 85);
+    color: oklch(0.88 0.01 85);
     border-left: 3px solid transparent;
     transition: all 0.15s ease;
   }
 
   .nav-item:hover {
-    background: oklch(0.17 0.005 60);
+    background: oklch(0.22 0.008 60);
     color: oklch(1 0 0);
     border-left: 3px solid oklch(0.78 0.16 85);
   }
