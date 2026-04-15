@@ -407,34 +407,39 @@ export default function Home() {
           className="flex-1 overflow-y-auto"
           style={{ scrollBehavior: "smooth" }}
         >
-          {/* Cover / Hero — gold background so black logo text is visible */}
-          <div className="relative px-8 md:px-16 py-16 overflow-hidden" style={{ background: "linear-gradient(135deg, oklch(0.72 0.17 82) 0%, oklch(0.82 0.18 88) 50%, oklch(0.68 0.16 78) 100%)" }}>
+          {/* Cover / Hero — gold background, side-by-side layout */}
+          <div className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, oklch(0.72 0.17 82) 0%, oklch(0.82 0.18 88) 50%, oklch(0.68 0.16 78) 100%)" }}>
             {/* Subtle texture overlay */}
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, oklch(0.50 0.10 80) 10px, oklch(0.50 0.10 80) 11px)" }} />
-            <div className="relative max-w-4xl">
-              {/* Hero logo — large and dominant */}
-              <img src={LOGO_URL} alt="Rio Elite" className="h-64 w-auto object-contain mb-8 drop-shadow-sm" />
-              <div
-                className="text-[oklch(0.18_0.005_60)] text-[11px] tracking-[0.3em] uppercase font-bold mb-3"
-                style={{ fontFamily: "'Barlow Condensed', Arial, sans-serif" }}
-              >
-                Official Program Document
+            <div className="relative flex items-center gap-8 md:gap-12 px-8 md:px-16 py-8">
+              {/* Large logo on the left */}
+              <div className="flex-shrink-0">
+                <img src={LOGO_URL} alt="Rio Elite" className="w-64 md:w-80 h-auto object-contain drop-shadow-sm" />
               </div>
-              <h1
-                className="text-[oklch(0.10_0.005_60)] mb-4 leading-none"
-                style={{
-                  fontFamily: "'Barlow Condensed', Arial, sans-serif",
-                  fontWeight: 800,
-                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                  letterSpacing: "0.03em",
-                }}
-              >
-                STAFF OPERATIONS MANUAL
-              </h1>
-              <div className="w-16 h-1 bg-[oklch(0.18_0.005_60)] mb-6" />
-              <p className="text-[oklch(0.22_0.005_60)] text-[15px] leading-[1.8] max-w-2xl">
-                This manual is the definitive guide to coaching standards, program systems, policies, and procedures at Rio Elite. Every coach is expected to read, understand, and operate in full compliance with everything contained herein.
-              </p>
+              {/* Title text on the right */}
+              <div className="flex-1 min-w-0">
+                <div
+                  className="text-[oklch(0.18_0.005_60)] text-[10px] tracking-[0.3em] uppercase font-bold mb-2"
+                  style={{ fontFamily: "'Barlow Condensed', Arial, sans-serif" }}
+                >
+                  Official Program Document
+                </div>
+                <h1
+                  className="text-[oklch(0.10_0.005_60)] mb-3 leading-none"
+                  style={{
+                    fontFamily: "'Barlow Condensed', Arial, sans-serif",
+                    fontWeight: 800,
+                    fontSize: "clamp(1.6rem, 4vw, 3rem)",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  STAFF OPERATIONS MANUAL
+                </h1>
+                <div className="w-12 h-1 bg-[oklch(0.18_0.005_60)] mb-3" />
+                <p className="text-[oklch(0.22_0.005_60)] text-[13px] leading-[1.7] max-w-lg">
+                  This manual is the definitive guide to coaching standards, program systems, policies, and procedures at Rio Elite.
+                </p>
+              </div>
             </div>
           </div>
 
