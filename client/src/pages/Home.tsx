@@ -412,8 +412,8 @@ export default function Home() {
             {/* Subtle texture overlay */}
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, oklch(0.50 0.10 80) 10px, oklch(0.50 0.10 80) 11px)" }} />
             <div className="relative max-w-4xl">
-              {/* Large logo — black text reads perfectly on gold */}
-              <img src={LOGO_URL} alt="Rio Elite" className="h-36 w-auto object-contain mb-8 drop-shadow-sm" />
+              {/* Hero logo — large and dominant */}
+              <img src={LOGO_URL} alt="Rio Elite" className="h-64 w-auto object-contain mb-8 drop-shadow-sm" />
               <div
                 className="text-[oklch(0.18_0.005_60)] text-[11px] tracking-[0.3em] uppercase font-bold mb-3"
                 style={{ fontFamily: "'Barlow Condensed', Arial, sans-serif" }}
