@@ -77,56 +77,68 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   let currentSectionTitle = "RIO ELITE STAFF OPERATIONS MANUAL";
 
   // ── Cover Page ──────────────────────────────────────────────────────────────
-  // Full black background
-  doc.setFillColor(...BLACK);
+  // Full gold background — logo has black text so this is the natural canvas
+  doc.setFillColor(201, 162, 39);
   doc.rect(0, 0, PAGE_W, PAGE_H, "F");
 
-  // Gold logo panel — centered, takes up top 60% of page
-  const panelW = PAGE_W - 36;
-  const panelH = 140;
-  const panelX = 18;
-  const panelY = 30;
-  doc.setFillColor(201, 162, 39);
-  doc.rect(panelX, panelY, panelW, panelH, "F");
+  // Subtle diagonal texture lines for depth
+  doc.setDrawColor(190, 150, 30);
+  doc.setLineWidth(0.3);
+  for (let i = -PAGE_H; i < PAGE_W + PAGE_H; i += 12) {
+    doc.line(i, 0, i + PAGE_H, PAGE_H);
+  }
 
-  // Load and embed logo — large and centered inside gold panel
+  // Black accent bar at very top
+  doc.setFillColor(...BLACK);
+  doc.rect(0, 0, PAGE_W, 8, "F");
+
+  // Black accent bar at very bottom
+  doc.setFillColor(...BLACK);
+  doc.rect(0, PAGE_H - 14, PAGE_W, 14, "F");
+
+  // Confidential in bottom bar
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7);
+  doc.setTextColor(201, 162, 39);
+  doc.text("CONFIDENTIAL — FOR RIO ELITE COACHING STAFF ONLY", PAGE_W / 2, PAGE_H - 5, { align: "center" });
+
+  // Load and embed logo — large and centered in upper portion
   const logoUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663270045816/N4rgkrRwWxtgy5x7UFcaiD/rio-elite-logo_7679350b.png";
   try {
     const logoDataUrl = await loadImageAsDataUrl(logoUrl);
-    const logoW = 120;
-    const logoH = 95;
-    const logoX = panelX + (panelW - logoW) / 2;
-    const logoY = panelY + (panelH - logoH) / 2;
+    const logoW = 130;
+    const logoH = 100;
+    const logoX = (PAGE_W - logoW) / 2;
+    const logoY = 45;
     doc.addImage(logoDataUrl, "PNG", logoX, logoY, logoW, logoH);
   } catch (_e) {
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(32);
+    doc.setFontSize(36);
     doc.setTextColor(...BLACK);
-    doc.text("RIO ELITE", PAGE_W / 2, panelY + panelH / 2, { align: "center" });
+    doc.text("RIO ELITE", PAGE_W / 2, 100, { align: "center" });
   }
 
-  // Title below the gold panel
-  const titleY = panelY + panelH + 22;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(28);
-  doc.setTextColor(...WHITE);
-  doc.text("STAFF OPERATIONS MANUAL", PAGE_W / 2, titleY, { align: "center" });
+  // Thin black divider line
+  doc.setFillColor(...BLACK);
+  doc.rect(MARGIN_L + 10, 162, CONTENT_W - 20, 1, "F");
 
-  // Gold underline
-  doc.setFillColor(...GOLD);
-  doc.rect(PAGE_W / 2 - 35, titleY + 5, 70, 1.5, "F");
+  // Title in black below logo
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(26);
+  doc.setTextColor(...BLACK);
+  doc.text("STAFF OPERATIONS MANUAL", PAGE_W / 2, 178, { align: "center" });
 
   // Subtitle
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  doc.setTextColor(201, 162, 39);
-  doc.text("OFFICIAL PROGRAM DOCUMENT  ·  RIO ELITE ALL STAR CHEER", PAGE_W / 2, titleY + 16, { align: "center" });
+  doc.setFontSize(9);
+  doc.setTextColor(80, 60, 10);
+  doc.text("OFFICIAL PROGRAM DOCUMENT  ·  RIO ELITE ALL STAR CHEER", PAGE_W / 2, 190, { align: "center" });
 
-  // Confidential notice at bottom
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(7.5);
-  doc.setTextColor(120, 110, 80);
-  doc.text("CONFIDENTIAL — FOR RIO ELITE COACHING STAFF ONLY", PAGE_W / 2, PAGE_H - 18, { align: "center" });
+  // Season year
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(11);
+  doc.setTextColor(...BLACK);
+  doc.text("2025 – 2026 SEASON", PAGE_W / 2, 205, { align: "center" });
 
   addPageFooter(doc);  // ── Table of Contents ─────────────────────────────────────────────────────
   doc.addPage();
