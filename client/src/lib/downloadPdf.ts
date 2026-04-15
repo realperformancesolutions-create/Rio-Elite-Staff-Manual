@@ -152,6 +152,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
 
   // ── Sections ──────────────────────────────────────────────────────────────
   const totalSections = SECTIONS.length;
+  let y = 28; // current vertical position on the page (mm)
 
   for (let si = 0; si < SECTIONS.length; si++) {
     const section = SECTIONS[si];
