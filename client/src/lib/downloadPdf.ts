@@ -77,62 +77,50 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   let currentSectionTitle = "RIO ELITE STAFF OPERATIONS MANUAL";
 
   // ── Cover Page ──────────────────────────────────────────────────────────────
-  // Top gold section (logo lives here so black text is readable)
-  const goldSectionH = PAGE_H * 0.55;
-  doc.setFillColor(201, 162, 39); // gold
-  doc.rect(0, 0, PAGE_W, goldSectionH, "F");
+  // Full black background
+  doc.setFillColor(...BLACK);
+  doc.rect(0, 0, PAGE_W, PAGE_H, "F");
 
-  // Load and embed logo centered in gold section
+  // Gold logo panel — centered, takes up top 60% of page
+  const panelW = PAGE_W - 36;
+  const panelH = 140;
+  const panelX = 18;
+  const panelY = 30;
+  doc.setFillColor(201, 162, 39);
+  doc.rect(panelX, panelY, panelW, panelH, "F");
+
+  // Load and embed logo — large and centered inside gold panel
   const logoUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663270045816/N4rgkrRwWxtgy5x7UFcaiD/rio-elite-logo_7679350b.png";
   try {
     const logoDataUrl = await loadImageAsDataUrl(logoUrl);
-    const logoW = 90;
-    const logoH = 70;
-    const logoX = (PAGE_W - logoW) / 2;
-    const logoY = goldSectionH / 2 - logoH / 2 - 10;
+    const logoW = 120;
+    const logoH = 95;
+    const logoX = panelX + (panelW - logoW) / 2;
+    const logoY = panelY + (panelH - logoH) / 2;
     doc.addImage(logoDataUrl, "PNG", logoX, logoY, logoW, logoH);
   } catch (_e) {
-    // If logo fails to load, show text fallback
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(28);
+    doc.setFontSize(32);
     doc.setTextColor(...BLACK);
-    doc.text("RIO ELITE", PAGE_W / 2, goldSectionH / 2, { align: "center" });
+    doc.text("RIO ELITE", PAGE_W / 2, panelY + panelH / 2, { align: "center" });
   }
 
-  // Bottom black section
-  doc.setFillColor(...BLACK);
-  doc.rect(0, goldSectionH, PAGE_W, PAGE_H - goldSectionH, "F");
-
-  // Thin gold divider between sections
-  doc.setFillColor(...GOLD);
-  doc.rect(0, goldSectionH, PAGE_W, 2, "F");
-
-  // Title centered in black section
-  const titleY = goldSectionH + 35;
+  // Title below the gold panel
+  const titleY = panelY + panelH + 22;
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(26);
+  doc.setFontSize(28);
   doc.setTextColor(...WHITE);
   doc.text("STAFF OPERATIONS MANUAL", PAGE_W / 2, titleY, { align: "center" });
 
-  // Gold underline centered
+  // Gold underline
   doc.setFillColor(...GOLD);
-  doc.rect(PAGE_W / 2 - 25, titleY + 4, 50, 1.5, "F");
+  doc.rect(PAGE_W / 2 - 35, titleY + 5, 70, 1.5, "F");
 
   // Subtitle
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(180, 170, 140);
-  doc.text("OFFICIAL PROGRAM DOCUMENT", PAGE_W / 2, titleY + 14, { align: "center" });
-
-  // Description
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.5);
-  doc.setTextColor(160, 150, 120);
-  const coverDesc = doc.splitTextToSize(
-    "This manual is the definitive guide to coaching standards, program systems, policies, and procedures at Rio Elite. Every coach is expected to read, understand, and operate in full compliance with everything contained herein.",
-    CONTENT_W - 20
-  );
-  doc.text(coverDesc, PAGE_W / 2, titleY + 26, { align: "center" });
+  doc.setFontSize(10);
+  doc.setTextColor(201, 162, 39);
+  doc.text("OFFICIAL PROGRAM DOCUMENT  ·  RIO ELITE ALL STAR CHEER", PAGE_W / 2, titleY + 16, { align: "center" });
 
   // Confidential notice at bottom
   doc.setFont("helvetica", "normal");
