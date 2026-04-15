@@ -113,35 +113,35 @@ export const SECTIONS: ManualSection[] = [
   },
   {
     num: "02",
-    title: "G.R.I.P. CORE VALUES",
+    title: "T.I.F.A. CORE VALUES",
     sub: "As Applied to Coaches — The Foundation of Our Coaching Staff",
     content: [
       {
         type: "italic_intro",
-        text: "Our coaching philosophy is built on four core pillars. As a Rio Elite coach, these values are not aspirational — they are operational. They guide every decision you make, every interaction you have, and every practice you run.",
+        text: "Our coaching philosophy is built on four core values: Teamwork, Integrity, Faith, and Accountability. As a Rio Elite coach, these values are not aspirational — they are operational. They guide every decision you make, every interaction you have, and every practice you run.",
       },
       {
         type: "grip_cards",
         cards: [
           {
-            letter: "G",
-            word: "GUIDANCE",
-            desc: "As a coach, you are the compass for your athletes. You provide clear direction, model correct technique, and lead by example — demonstrating the right way to handle challenges, setbacks, and victories. Your athletes look to you to guide them not only in skill development but in character and discipline.",
-          },
-          {
-            letter: "R",
-            word: "RESILIENCE",
-            desc: "You stay positive and composed under pressure — through difficult competitions, skill plateaus, and team setbacks. You foster a resilient mindset in your athletes by shutting down negativity, discouraging doubt, and keeping the team focused on growth through both victories and challenges.",
+            letter: "T",
+            word: "TEAMWORK",
+            desc: "At Rio Elite, we win and grow together. As a coach, you model collaboration — with your athletes, your co-coaches, and program leadership. You prioritize the team over the individual, build unity within your squad, and contribute to a culture where every person feels valued and supported.",
           },
           {
             letter: "I",
-            word: "INSPIRATION",
-            desc: "Great coaches do more than teach skills — they ignite a passion for the sport. You inspire athletes to push beyond their perceived limits, celebrate progress, and believe in what the team can achieve together. Your energy, enthusiasm, and belief in each athlete is contagious.",
+            word: "INTEGRITY",
+            desc: "You do the right thing even when no one is watching. You are honest with athletes, parents, and leadership. You follow through on your commitments, own your mistakes, and hold yourself to the same standards you expect from your athletes. Integrity is non-negotiable at Rio Elite.",
           },
           {
-            letter: "P",
-            word: "PARTNERSHIP",
-            desc: "You are a partner to your athletes, their families, and the entire Rio Elite staff. You collaborate with co-coaches, support program systems, communicate proactively with leadership, and contribute to a culture where everyone works toward a shared goal.",
+            letter: "F",
+            word: "FAITH",
+            desc: "Rio Elite is a faith-based program. You coach with purpose beyond the scoreboard — believing in the potential of every athlete, leading with grace under pressure, and trusting the process even when results are not immediate. Faith guides how we treat people and why we do what we do.",
+          },
+          {
+            letter: "A",
+            word: "ACCOUNTABILITY",
+            desc: "You take ownership of your team's performance, your professional conduct, and your personal growth. You show up prepared, meet deadlines, follow program systems, and accept responsibility when things fall short. Accountability is what separates good coaches from great ones.",
           },
         ],
       },

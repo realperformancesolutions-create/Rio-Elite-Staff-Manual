@@ -73,19 +73,31 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   doc.setFillColor(...GOLD);
   doc.rect(0, PAGE_H * 0.55, PAGE_W, 3, "F");
 
-  // Title
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(36);
-  doc.setTextColor(...WHITE);
-  doc.text("STAFF", MARGIN_L, 110);
-  doc.text("OPERATIONS", MARGIN_L, 128);
-  doc.text("MANUAL", MARGIN_L, 146);
-
-  // Subtitle
+  // Subtitle label
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
+  doc.setFontSize(9);
+  doc.setTextColor(...GOLD);
+  doc.text("RIO ELITE  ·  OFFICIAL PROGRAM DOCUMENT", MARGIN_L, 95);
+
+  // Title — single line with smaller font to avoid word-wrap issues
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(28);
+  doc.setTextColor(...WHITE);
+  doc.text("STAFF OPERATIONS MANUAL", MARGIN_L, 115);
+
+  // Gold rule under title
+  doc.setFillColor(...GOLD);
+  doc.rect(MARGIN_L, 120, 40, 1.5, "F");
+
+  // Description
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9);
   doc.setTextColor(180, 170, 140);
-  doc.text("RIO ELITE  ·  OFFICIAL PROGRAM DOCUMENT", MARGIN_L, 165);
+  const coverDesc = doc.splitTextToSize(
+    "This manual is the definitive guide to coaching standards, program systems, policies, and procedures at Rio Elite. Every coach is expected to read, understand, and operate in full compliance with everything contained herein.",
+    CONTENT_W
+  );
+  doc.text(coverDesc, MARGIN_L, 132);
 
   // Confidential notice
   doc.setFont("helvetica", "normal");
@@ -148,34 +160,44 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
 
     if (onProgress) onProgress(Math.round((si / totalSections) * 90) + 5);
 
-    doc.addPage();
-    addPageHeader(doc, currentSection, currentSectionTitle);
-
-    let y = 28;
+    // Only start a new page if there isn't enough room for the section header + some content
+    // (or if this is the very first section)
+    if (si === 0 || y > PAGE_H - 60) {
+      if (si > 0) addPageFooter(doc);
+      doc.addPage();
+      addPageHeader(doc, currentSection, currentSectionTitle);
+      y = 28;
+    } else {
+      // Add a visual separator between sections on the same page
+      y += 8;
+      doc.setFillColor(...GOLD);
+      doc.rect(MARGIN_L, y, CONTENT_W, 0.5, "F");
+      y += 8;
+    }
 
     // Section heading block
     doc.setFont("helvetica", "bold");
     doc.setFontSize(7);
     doc.setTextColor(...GOLD_DARK);
     doc.text(`SECTION ${section.num}`, MARGIN_L, y);
-    y += 5;
+    y += 6;
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
     doc.setTextColor(...BLACK);
     const titleLines = doc.splitTextToSize(section.title, CONTENT_W);
     doc.text(titleLines, MARGIN_L, y);
-    y += titleLines.length * 7 + 1;
+    y += titleLines.length * 7 + 3;
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8.5);
     doc.setTextColor(...MID_GRAY);
     doc.text(section.sub, MARGIN_L, y);
-    y += 4;
+    y += 5;
 
     doc.setFillColor(...GOLD);
     doc.rect(MARGIN_L, y, 12, 1.2, "F");
-    y += 7;
+    y += 8;
 
     // Content blocks
     for (const block of section.content) {

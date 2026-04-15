@@ -291,7 +291,7 @@ export default function Home() {
                 <line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             </button>
-            <img src={LOGO_URL} alt="Rio Elite" className="h-8 w-auto object-contain" />
+            <img src={LOGO_URL} alt="Rio Elite" className="h-8 w-auto object-contain bg-white rounded px-1.5 py-0.5" />
             <div className="hidden sm:block">
               <div
                 className="text-[11px] tracking-[0.15em] text-[oklch(0.60_0.02_85)] uppercase"
@@ -384,7 +384,7 @@ export default function Home() {
                   `}
                 >
                   <span
-                    className={`text-[11px] font-bold flex-shrink-0 mt-[1px] ${isActive ? "text-[oklch(0.78_0.16_85)]" : "text-[oklch(0.45_0.02_85)]"}`}
+                    className={`text-[11px] font-bold flex-shrink-0 mt-[1px] ${isActive ? "text-[oklch(0.78_0.16_85)]" : "text-[oklch(0.72_0.04_85)]"}`}
                     style={{ fontFamily: "'Barlow Condensed', Arial, sans-serif" }}
                   >
                     {section.num}
@@ -415,7 +415,7 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[oklch(0.78_0.16_85)] transform -translate-x-16 translate-y-16" />
             </div>
             <div className="relative max-w-4xl">
-              <img src={LOGO_URL} alt="Rio Elite" className="h-20 w-auto object-contain mb-8" />
+              <img src={LOGO_URL} alt="Rio Elite" className="h-20 w-auto object-contain mb-8 bg-white rounded-lg px-4 py-2" />
               <div
                 className="text-[oklch(0.78_0.16_85)] text-[11px] tracking-[0.3em] uppercase font-bold mb-3"
                 style={{ fontFamily: "'Barlow Condensed', Arial, sans-serif" }}
