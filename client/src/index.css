@@ -1,0 +1,201 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Rio Elite Brand Colors — Black & Gold */
+  --cfa-navy: oklch(0.13 0.005 264);
+  --cfa-red: oklch(0.72 0.14 85);
+  --cfa-light-gray: oklch(0.97 0.002 264);
+  --cfa-mid-gray: oklch(0.55 0.01 264);
+  --cfa-dark-gray: oklch(0.35 0.01 264);
+
+  --background: oklch(0.98 0.002 264);
+  --foreground: oklch(0.12 0.005 264);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.005 264);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.005 264);
+  --primary: oklch(0.13 0.005 264);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.002 264);
+  --secondary-foreground: oklch(0.13 0.005 264);
+  --muted: oklch(0.95 0.003 264);
+  --muted-foreground: oklch(0.55 0.01 264);
+  --accent: oklch(0.72 0.14 85);
+  --accent-foreground: oklch(0.12 0.005 264);
+  --destructive: oklch(0.72 0.14 85);
+  --destructive-foreground: oklch(0.12 0.005 264);
+  --border: oklch(0.88 0.005 264);
+  --input: oklch(0.88 0.005 264);
+  --ring: oklch(0.13 0.005 264);
+  --sidebar: oklch(0.13 0.005 264);
+  --sidebar-foreground: oklch(0.92 0.005 264);
+  --sidebar-primary: oklch(0.72 0.14 85);
+  --sidebar-primary-foreground: oklch(0.12 0.005 264);
+  --sidebar-accent: oklch(0.20 0.005 264);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.22 0.005 264);
+  --sidebar-ring: oklch(0.72 0.14 85);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1400px;
+    }
+  }
+
+  /* Manual-specific styles */
+  .section-header {
+    font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: oklch(0.13 0.005 264);
+    font-size: 0.7rem;
+    border-bottom: 2px solid oklch(0.72 0.14 85);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .grip-card {
+    background: oklch(0.97 0.002 264);
+    border-top: 3px solid oklch(0.72 0.14 85);
+    padding: 1.25rem;
+    border-radius: 0.25rem;
+  }
+
+  .penalty-row-even {
+    background: oklch(0.97 0.002 264);
+  }
+  .penalty-row-odd {
+    background: oklch(1 0 0);
+  }
+
+  .nav-item-active {
+    background: oklch(0.20 0.005 264);
+    color: oklch(1 0 0);
+    border-left: 3px solid oklch(0.72 0.14 85);
+  }
+
+  .nav-item {
+    color: oklch(0.80 0.01 264);
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .nav-item:hover {
+    background: oklch(0.20 0.005 264);
+    color: oklch(1 0 0);
+    border-left: 3px solid oklch(0.72 0.14 85);
+  }
+
+  .content-link {
+    color: oklch(0.72 0.14 85);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    word-break: break-all;
+  }
+
+  .content-link:hover {
+    color: oklch(0.60 0.12 85);
+  }
+
+  .bullet-item::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: oklch(0.72 0.14 85);
+    margin-right: 10px;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .italic-intro {
+    font-style: italic;
+    color: oklch(0.35 0.01 264);
+    border-left: 3px solid oklch(0.72 0.14 85);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+}
