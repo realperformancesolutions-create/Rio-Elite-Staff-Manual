@@ -59,55 +59,88 @@ function wrapText(doc: jsPDF, text: string, x: number, maxWidth: number, fontSiz
   return doc.splitTextToSize(text, maxWidth);
 }
 
+async function loadImageAsDataUrl(url: string): Promise<string> {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
 export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
   let currentSection = "00";
   let currentSectionTitle = "RIO ELITE STAFF OPERATIONS MANUAL";
 
-  // ── Cover Page ────────────────────────────────────────────────────────────
+  // ── Cover Page ──────────────────────────────────────────────────────────────
+  // Top gold section (logo lives here so black text is readable)
+  const goldSectionH = PAGE_H * 0.55;
+  doc.setFillColor(201, 162, 39); // gold
+  doc.rect(0, 0, PAGE_W, goldSectionH, "F");
+
+  // Load and embed logo centered in gold section
+  const logoUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663270045816/N4rgkrRwWxtgy5x7UFcaiD/rio-elite-logo_7679350b.png";
+  try {
+    const logoDataUrl = await loadImageAsDataUrl(logoUrl);
+    const logoW = 90;
+    const logoH = 70;
+    const logoX = (PAGE_W - logoW) / 2;
+    const logoY = goldSectionH / 2 - logoH / 2 - 10;
+    doc.addImage(logoDataUrl, "PNG", logoX, logoY, logoW, logoH);
+  } catch (_e) {
+    // If logo fails to load, show text fallback
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(28);
+    doc.setTextColor(...BLACK);
+    doc.text("RIO ELITE", PAGE_W / 2, goldSectionH / 2, { align: "center" });
+  }
+
+  // Bottom black section
   doc.setFillColor(...BLACK);
-  doc.rect(0, 0, PAGE_W, PAGE_H, "F");
+  doc.rect(0, goldSectionH, PAGE_W, PAGE_H - goldSectionH, "F");
 
-  // Gold accent bar
+  // Thin gold divider between sections
   doc.setFillColor(...GOLD);
-  doc.rect(0, PAGE_H * 0.55, PAGE_W, 3, "F");
+  doc.rect(0, goldSectionH, PAGE_W, 2, "F");
 
-  // Subtitle label
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(...GOLD);
-  doc.text("RIO ELITE  ·  OFFICIAL PROGRAM DOCUMENT", MARGIN_L, 95);
-
-  // Title — single line with smaller font to avoid word-wrap issues
+  // Title centered in black section
+  const titleY = goldSectionH + 35;
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(28);
+  doc.setFontSize(26);
   doc.setTextColor(...WHITE);
-  doc.text("STAFF OPERATIONS MANUAL", MARGIN_L, 115);
+  doc.text("STAFF OPERATIONS MANUAL", PAGE_W / 2, titleY, { align: "center" });
 
-  // Gold rule under title
+  // Gold underline centered
   doc.setFillColor(...GOLD);
-  doc.rect(MARGIN_L, 120, 40, 1.5, "F");
+  doc.rect(PAGE_W / 2 - 25, titleY + 4, 50, 1.5, "F");
 
-  // Description
+  // Subtitle
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
   doc.setTextColor(180, 170, 140);
+  doc.text("OFFICIAL PROGRAM DOCUMENT", PAGE_W / 2, titleY + 14, { align: "center" });
+
+  // Description
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  doc.setTextColor(160, 150, 120);
   const coverDesc = doc.splitTextToSize(
     "This manual is the definitive guide to coaching standards, program systems, policies, and procedures at Rio Elite. Every coach is expected to read, understand, and operate in full compliance with everything contained herein.",
-    CONTENT_W
+    CONTENT_W - 20
   );
-  doc.text(coverDesc, MARGIN_L, 132);
+  doc.text(coverDesc, PAGE_W / 2, titleY + 26, { align: "center" });
 
-  // Confidential notice
+  // Confidential notice at bottom
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setTextColor(120, 110, 80);
-  doc.text("CONFIDENTIAL — FOR RIO ELITE COACHING STAFF ONLY", MARGIN_L, PAGE_H - 20);
+  doc.text("CONFIDENTIAL — FOR RIO ELITE COACHING STAFF ONLY", PAGE_W / 2, PAGE_H - 18, { align: "center" });
 
-  addPageFooter(doc);
-
-  // ── Table of Contents ─────────────────────────────────────────────────────
+  addPageFooter(doc);  // ── Table of Contents ─────────────────────────────────────────────────────
   doc.addPage();
   addPageHeader(doc, "00", "TABLE OF CONTENTS");
 
