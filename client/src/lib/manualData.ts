@@ -107,11 +107,7 @@ export const SECTIONS: ManualSection[] = [
       },
       {
         type: "body",
-        text: "#GETAGRIP",
-      },
-      {
-        type: "body",
-        text: "Every coach at Rio Elite is expected to embody these values in every interaction — with athletes, with parents, with co-coaches, and with program leadership. When in doubt about how to handle a situation, ask yourself: does this align with G.R.I.P.?",
+        text: "Every coach at Rio Elite is expected to embody these values in every interaction — with athletes, with parents, with co-coaches, and with program leadership. When in doubt about how to handle a situation, ask yourself: does this reflect our core values?",
       },
     ],
   },
@@ -237,7 +233,7 @@ export const SECTIONS: ManualSection[] = [
       },
       {
         type: "section_label",
-        text: "4.2  CFA BRANDING & APPEARANCE",
+        text: "4.2  RIO ELITE BRANDING & APPEARANCE",
       },
       {
         type: "body",
@@ -246,7 +242,7 @@ export const SECTIONS: ManualSection[] = [
       {
         type: "bullet",
         items: [
-          "CFA-branded apparel must be worn during all practices and program events.",
+          "Rio Elite-branded apparel must be worn during all practices and program events.",
           "Clothing must be clean, in good condition, and appropriate for an athletic coaching environment.",
           "Coaches are required to wear proper athletic footwear at all times. Barefoot, sandals, Crocs, or any open-toed or non-supportive footwear are not permitted.",
           "Hair must be neat and out of the face during practice.",
@@ -639,7 +635,7 @@ Beginning with the 3rd missed submission, a $10.00 deduction will be applied for
       {
         type: "bullet",
         items: [
-          "Official CFA coaching apparel must be worn — no exceptions.",
+          "Official Rio Elite coaching apparel must be worn — no exceptions.",
           "Clothing must be clean, pressed, and in excellent condition.",
           "Shoes must be clean, professional athletic footwear appropriate for the competition floor.",
           "Hair must be neat, styled, and professional.",

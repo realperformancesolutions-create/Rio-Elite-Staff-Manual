@@ -1,15 +1,17 @@
-// PDF Download utility for Cheer Florida Staff Operations Manual
+// Rio Elite Staff Operations Manual — PDF Generator
 // Uses jsPDF to generate a branded, multi-page PDF from the manual data
+// Brand: Deep black headers, gold accents
 
 import jsPDF from "jspdf";
 import { SECTIONS, ContentBlock } from "./manualData";
 
-const NAVY = [26, 42, 89] as const;
-const RED = [190, 30, 45] as const;
+const BLACK = [13, 13, 13] as const;       // Deep black
+const GOLD = [201, 162, 39] as const;      // Rio Elite gold
+const GOLD_DARK = [160, 128, 28] as const; // Darker gold for text
 const WHITE = [255, 255, 255] as const;
-const LIGHT_GRAY = [248, 248, 250] as const;
-const MID_GRAY = [100, 110, 130] as const;
-const DARK = [35, 40, 55] as const;
+const LIGHT_GOLD = [252, 248, 235] as const; // Very light gold tint
+const MID_GRAY = [100, 100, 100] as const;
+const DARK = [35, 35, 35] as const;
 
 const PAGE_W = 210; // A4 mm
 const PAGE_H = 297;
@@ -18,42 +20,38 @@ const MARGIN_R = 18;
 const CONTENT_W = PAGE_W - MARGIN_L - MARGIN_R;
 
 function addPageHeader(doc: jsPDF, sectionNum: string, sectionTitle: string) {
-  // Navy header bar
-  doc.setFillColor(...NAVY);
+  // Black header bar
+  doc.setFillColor(...BLACK);
   doc.rect(0, 0, PAGE_W, 18, "F");
-  // Red accent line
-  doc.setFillColor(...RED);
+  // Gold accent line
+  doc.setFillColor(...GOLD);
   doc.rect(0, 18, PAGE_W, 1.5, "F");
 
-  // Logo text (since we can't embed image in every header easily)
   doc.setFont("helvetica", "bold");
   doc.setFontSize(9);
-  doc.setTextColor(...WHITE);
-  doc.text("CHEER FLORIDA", MARGIN_L, 11.5);
+  doc.setTextColor(...GOLD);
+  doc.text("RIO ELITE", MARGIN_L, 11.5);
 
   // Section label
   doc.setFont("helvetica", "normal");
   doc.setFontSize(7.5);
-  doc.setTextColor(180, 190, 210);
+  doc.setTextColor(180, 170, 140);
   const label = `SECTION ${sectionNum}  ·  ${sectionTitle.toUpperCase()}`;
   doc.text(label, PAGE_W / 2, 11.5, { align: "center" });
 
-  // Page number placeholder (will be added after)
-  doc.setTextColor(180, 190, 210);
+  // Page number
+  doc.setTextColor(180, 170, 140);
   doc.setFontSize(7.5);
   doc.text(`${doc.getCurrentPageInfo().pageNumber}`, PAGE_W - MARGIN_R, 11.5, { align: "right" });
 }
 
 function addPageFooter(doc: jsPDF) {
-  doc.setFillColor(...NAVY);
+  doc.setFillColor(...BLACK);
   doc.rect(0, PAGE_H - 10, PAGE_W, 10, "F");
   doc.setFont("helvetica", "normal");
   doc.setFontSize(7);
-  doc.setTextColor(180, 190, 210);
-  doc.text("CHEER FLORIDA  ·  STAFF OPERATIONS MANUAL  ·  CONFIDENTIAL", PAGE_W / 2, PAGE_H - 3.5, { align: "center" });
-  doc.setTextColor(...RED);
-  doc.setFont("helvetica", "bold");
-  doc.text("#GETAGRIP", PAGE_W - MARGIN_R, PAGE_H - 3.5, { align: "right" });
+  doc.setTextColor(180, 170, 140);
+  doc.text("RIO ELITE  ·  STAFF OPERATIONS MANUAL  ·  CONFIDENTIAL", PAGE_W / 2, PAGE_H - 3.5, { align: "center" });
 }
 
 function wrapText(doc: jsPDF, text: string, x: number, maxWidth: number, fontSize: number): string[] {
@@ -65,14 +63,14 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
   let currentSection = "00";
-  let currentSectionTitle = "CHEER FLORIDA STAFF OPERATIONS MANUAL";
+  let currentSectionTitle = "RIO ELITE STAFF OPERATIONS MANUAL";
 
   // ── Cover Page ────────────────────────────────────────────────────────────
-  doc.setFillColor(...NAVY);
+  doc.setFillColor(...BLACK);
   doc.rect(0, 0, PAGE_W, PAGE_H, "F");
 
-  // Red accent bar
-  doc.setFillColor(...RED);
+  // Gold accent bar
+  doc.setFillColor(...GOLD);
   doc.rect(0, PAGE_H * 0.55, PAGE_W, 3, "F");
 
   // Title
@@ -86,20 +84,14 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
   // Subtitle
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  doc.setTextColor(180, 190, 210);
-  doc.text("CHEER FLORIDA  ·  OFFICIAL PROGRAM DOCUMENT", MARGIN_L, 165);
-
-  // GRIP tagline
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(13);
-  doc.setTextColor(...RED);
-  doc.text("#GETAGRIP", MARGIN_L, 185);
+  doc.setTextColor(180, 170, 140);
+  doc.text("RIO ELITE  ·  OFFICIAL PROGRAM DOCUMENT", MARGIN_L, 165);
 
   // Confidential notice
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
-  doc.setTextColor(120, 130, 155);
-  doc.text("CONFIDENTIAL — FOR CHEER FLORIDA COACHING STAFF ONLY", MARGIN_L, PAGE_H - 20);
+  doc.setTextColor(120, 110, 80);
+  doc.text("CONFIDENTIAL — FOR RIO ELITE COACHING STAFF ONLY", MARGIN_L, PAGE_H - 20);
 
   addPageFooter(doc);
 
@@ -109,10 +101,10 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(20);
-  doc.setTextColor(...NAVY);
+  doc.setTextColor(...BLACK);
   doc.text("TABLE OF CONTENTS", MARGIN_L, 35);
 
-  doc.setFillColor(...RED);
+  doc.setFillColor(...GOLD);
   doc.rect(MARGIN_L, 38, 14, 1.5, "F");
 
   let tocY = 50;
@@ -125,12 +117,12 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
     }
     // Alternating row background
     if (i % 2 === 0) {
-      doc.setFillColor(...LIGHT_GRAY);
+      doc.setFillColor(...LIGHT_GOLD);
       doc.rect(MARGIN_L, tocY - 4, CONTENT_W, 8, "F");
     }
     doc.setFont("helvetica", "bold");
     doc.setFontSize(8.5);
-    doc.setTextColor(...RED);
+    doc.setTextColor(...GOLD_DARK);
     doc.text(section.num, MARGIN_L + 2, tocY + 0.5);
 
     doc.setFont("helvetica", "normal");
@@ -164,13 +156,13 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
     // Section heading block
     doc.setFont("helvetica", "bold");
     doc.setFontSize(7);
-    doc.setTextColor(...RED);
+    doc.setTextColor(...GOLD_DARK);
     doc.text(`SECTION ${section.num}`, MARGIN_L, y);
     y += 5;
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.setTextColor(...NAVY);
+    doc.setTextColor(...BLACK);
     const titleLines = doc.splitTextToSize(section.title, CONTENT_W);
     doc.text(titleLines, MARGIN_L, y);
     y += titleLines.length * 7 + 1;
@@ -181,7 +173,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
     doc.text(section.sub, MARGIN_L, y);
     y += 4;
 
-    doc.setFillColor(...RED);
+    doc.setFillColor(...GOLD);
     doc.rect(MARGIN_L, y, 12, 1.2, "F");
     y += 7;
 
@@ -206,7 +198,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
         y = 28;
       }
       y += 5;
-      doc.setDrawColor(...NAVY);
+      doc.setDrawColor(...BLACK);
       doc.setLineWidth(0.3);
       doc.rect(MARGIN_L, y, CONTENT_W, 60, "S");
 
@@ -217,7 +209,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
       // Col headers
       doc.setFont("helvetica", "bold");
       doc.setFontSize(7);
-      doc.setTextColor(...NAVY);
+      doc.setTextColor(...BLACK);
       doc.text("COACH SIGNATURE", col1X, y + 8);
       doc.text("PROGRAM LEADERSHIP", col2X, y + 8);
 
@@ -227,7 +219,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
       const lineY3 = y + 54;
 
       [col1X, col2X].forEach((cx) => {
-        doc.setDrawColor(100, 110, 130);
+        doc.setDrawColor(100, 100, 100);
         doc.setLineWidth(0.3);
         doc.line(cx, lineY1, cx + colW, lineY1);
         doc.line(cx, lineY2, cx + colW, lineY2);
@@ -247,7 +239,7 @@ export async function downloadManualPdf(onProgress?: (pct: number) => void) {
 
   if (onProgress) onProgress(100);
 
-  doc.save("CFA_Staff_Operations_Manual.pdf");
+  doc.save("Rio_Elite_Staff_Operations_Manual.pdf");
 }
 
 function renderBlock(
@@ -282,14 +274,14 @@ function renderBlock(
     case "italic_intro": {
       const lines = wrapText(doc, block.text, MARGIN_L + 2, CONTENT_W - 4, 9);
       y = checkPage(lines.length * 5 + 6);
-      doc.setFillColor(245, 245, 248);
+      doc.setFillColor(...LIGHT_GOLD);
       doc.rect(MARGIN_L, y - 3, CONTENT_W, lines.length * 5 + 5, "F");
-      doc.setDrawColor(...RED);
+      doc.setDrawColor(...GOLD);
       doc.setLineWidth(0.8);
       doc.line(MARGIN_L, y - 3, MARGIN_L, y + lines.length * 5 + 2);
       doc.setFont("helvetica", "italic");
       doc.setFontSize(9);
-      doc.setTextColor(60, 70, 90);
+      doc.setTextColor(60, 55, 35);
       doc.text(lines, MARGIN_L + 4, y);
       y += lines.length * 5 + 8;
       break;
@@ -299,10 +291,10 @@ function renderBlock(
       y = checkPage(10);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(8);
-      doc.setTextColor(...RED);
+      doc.setTextColor(...GOLD_DARK);
       doc.text(block.text.toUpperCase(), MARGIN_L, y);
       y += 2;
-      doc.setDrawColor(...RED);
+      doc.setDrawColor(...GOLD);
       doc.setLineWidth(0.5);
       doc.line(MARGIN_L, y, MARGIN_L + 30, y);
       y += 5;
@@ -313,7 +305,7 @@ function renderBlock(
       for (const item of block.items) {
         const lines = wrapText(doc, item, MARGIN_L + 7, CONTENT_W - 7, 9);
         y = checkPage(lines.length * 5 + 2);
-        doc.setFillColor(...RED);
+        doc.setFillColor(...GOLD);
         doc.rect(MARGIN_L + 1, y - 2, 2.5, 2.5, "F");
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
@@ -331,7 +323,7 @@ function renderBlock(
         y = checkPage(lines.length * 5 + 2);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8.5);
-        doc.setTextColor(...NAVY);
+        doc.setTextColor(...BLACK);
         doc.text(`${i + 1}.`, MARGIN_L + 1, y);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
@@ -345,11 +337,11 @@ function renderBlock(
 
     case "link": {
       y = checkPage(10);
-      doc.setFillColor(240, 242, 248);
+      doc.setFillColor(...LIGHT_GOLD);
       doc.rect(MARGIN_L, y - 3, CONTENT_W, 9, "F");
       doc.setFont("helvetica", "bold");
       doc.setFontSize(8.5);
-      doc.setTextColor(...RED);
+      doc.setTextColor(...GOLD_DARK);
       doc.text(`→  ${block.label}`, MARGIN_L + 4, y + 2);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(7.5);
@@ -365,30 +357,30 @@ function renderBlock(
       y = checkPage(cardH + 6);
       block.cards.forEach((card, i) => {
         const cx = MARGIN_L + i * (cardW + 2);
-        doc.setFillColor(...LIGHT_GRAY);
+        doc.setFillColor(...LIGHT_GOLD);
         doc.rect(cx, y, cardW, cardH, "F");
 
         // Big letter
         doc.setFont("helvetica", "bold");
         doc.setFontSize(22);
-        doc.setTextColor(...RED);
+        doc.setTextColor(...GOLD_DARK);
         doc.text(card.letter, cx + 4, y + 14);
 
         // Word
         doc.setFont("helvetica", "bold");
         doc.setFontSize(7.5);
-        doc.setTextColor(...NAVY);
+        doc.setTextColor(...BLACK);
         doc.text(card.word, cx + 4, y + 20);
 
-        // Red underline
-        doc.setFillColor(...RED);
+        // Gold underline
+        doc.setFillColor(...GOLD);
         doc.rect(cx + 4, y + 22, 10, 0.8, "F");
 
         // Description
         const descLines = doc.splitTextToSize(card.desc, cardW - 8);
         doc.setFont("helvetica", "normal");
         doc.setFontSize(7);
-        doc.setTextColor(60, 70, 90);
+        doc.setTextColor(60, 55, 35);
         doc.text(descLines.slice(0, 5), cx + 4, y + 27);
       });
       y += cardH + 8;
@@ -403,7 +395,7 @@ function renderBlock(
       y = checkPage(totalH);
 
       // Header row
-      doc.setFillColor(...NAVY);
+      doc.setFillColor(...BLACK);
       doc.rect(MARGIN_L, y, CONTENT_W, rowH, "F");
       doc.setFont("helvetica", "bold");
       doc.setFontSize(7.5);
@@ -421,17 +413,17 @@ function renderBlock(
           y = 28;
         }
         if (i % 2 === 0) {
-          doc.setFillColor(...LIGHT_GRAY);
+          doc.setFillColor(...LIGHT_GOLD);
           doc.rect(MARGIN_L, y, CONTENT_W, rowH, "F");
         }
         doc.setFont("helvetica", "bold");
         doc.setFontSize(8);
-        doc.setTextColor(isBonus ? 40 : 190, isBonus ? 140 : 30, isBonus ? 60 : 45);
+        doc.setTextColor(isBonus ? 40 : 160, isBonus ? 140 : 128, isBonus ? 60 : 28);
         doc.text(row.amount, MARGIN_L + 2, y + 5.5);
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(7.5);
-        doc.setTextColor(...NAVY);
+        doc.setTextColor(...BLACK);
         doc.text(doc.splitTextToSize(row.description, 48)[0], MARGIN_L + 28, y + 5.5);
 
         doc.setFont("helvetica", "normal");
@@ -450,14 +442,14 @@ function renderBlock(
         const stepH = descLines.length * 5 + 12;
         y = checkPage(stepH);
 
-        doc.setFillColor(240, 242, 248);
+        doc.setFillColor(...LIGHT_GOLD);
         doc.rect(MARGIN_L, y, CONTENT_W, stepH, "F");
-        doc.setFillColor(...NAVY);
+        doc.setFillColor(...BLACK);
         doc.rect(MARGIN_L, y, 3, stepH, "F");
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(7.5);
-        doc.setTextColor(...NAVY);
+        doc.setTextColor(...BLACK);
         doc.text(step.title.toUpperCase(), MARGIN_L + 8, y + 6);
 
         doc.setFont("helvetica", "normal");
