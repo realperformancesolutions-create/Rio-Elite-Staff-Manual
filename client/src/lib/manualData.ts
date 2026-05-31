@@ -285,7 +285,7 @@ export const SECTIONS: ManualSection[] = [
         items: [
           "Practice plans must be posted in the Team Band prior to the start of practice.",
           "Plans must account for every minute of practice time — be specific with coaching goals and direct in your expectations.",
-          "Practice plans must include all non-negotiable systems: H.I.I.T. warm-up, stretch system, tumbling drills, and jump system (minimum once per week).",
+          "Practice plans must include all non-negotiable systems: H.I.I.T. warm-up, stretch system, tumbling drills, and stunt drills/warm-up (minimum once per week).",
           "Scheduled practices are NOT to be used for choreography purposes. Routine changes must be done outside of normally scheduled practice time.",
           `PENALTY: Coaches are allowed up to 2 missed practice plan submissions.
 
@@ -317,16 +317,11 @@ Beginning with the 3rd missed submission, a $10.00 deduction will be applied for
         text: "The End of Day Report is a critical accountability and communication tool. It ensures that program leadership has a clear picture of what happened at every practice and what the plan is going forward.",
       },
       {
-        type: "link",
-        label: "Submit your End of Day Report",
-        url: "https://cheer-eod-ew9gfaes.manus.space",
-      },
-      {
         type: "bullet",
         items: [
           "An EOD report must be completed at the end of every practice day (estimated time: 5–10 minutes).",
           "The report must include: work completed during practice, work in progress, and plans for the next session.",
-          "EOD reports are turned in nightly to the All-Star Director and placed in the team binder.",
+          "Submit on Band — EOD reports are posted to the team Band channel nightly.",
           "EOD reports provide documentation for future planning and serve as added protection for coaches.",
           "PENALTY: Failure to complete an EOD report = $10.00 deduction per missed report.",
           "Failure to complete EOD reports consistently is grounds for a formal write-up.",
@@ -400,64 +395,22 @@ Beginning with the 3rd missed submission, a $10.00 deduction will be applied for
       },
       {
         type: "section_label",
-        text: "6.4  JUMP SYSTEM",
+        text: "6.4  STUNT DRILLS / WARM-UP SYSTEM",
       },
       {
         type: "body",
-        text: "The jump system must be executed at a minimum of once per week — this is a non-negotiable requirement. Rio Elite uses two distinct jump system options depending on where the team is in the season. Coaches must select the appropriate option based on the current phase of the season.",
-      },
-      {
-        type: "body",
-        text: "All drills in both jump systems are choreographed and performed on an 8-count track. This means arm paths, leg actions, and timing are predefined. Athletes know exactly when to move and how to move. Running drills on an 8-count allows coaches to keep athletes synchronized, control tempo and intensity, transition quickly between drills, eliminate wasted instruction time, and maintain practice flow without stopping. Instead of explaining every rep, the count and choreography drive execution.",
-      },
-      {
-        type: "body",
-        text: "Jump training is always divided into three distinct sections that are not interchangeable and are never combined randomly. Each section trains a different physical quality and serves a specific purpose: Plyometrics (explosive power and height), Isometrics (strength and body position), and Repetitions (muscle memory and consistency). Regardless of which system is in use, each section is given equal priority in the practice plan. No single section matters more than the others — consistency comes from training all three intentionally, not favoring one.",
-      },
-      {
-        type: "section_label",
-        text: "6.4A  OPTION 1: THE 30-MINUTE FOUNDATION SYSTEM (Building Phase)",
-      },
-      {
-        type: "body",
-        text: "The 30-Minute Foundation System is the primary jump training system used during the building phase of the season. This system is designed to be used from the start of the season through mid-season. During this phase, athletes return from summer breaks and practices shift toward routine construction, stunting, and tumbling being finalized. The Foundation System begins to introduce jumps into practice through extended conditioning blocks that are short, intentional segments that integrate directly into practice. The emphasis is on quality, organization, and consistency — not volume.",
+        text: "Stunt drills and a structured stunt warm-up must be incorporated into every practice session. This system is designed to build foundational stunting skills, reinforce technique, improve timing and communication between stunt groups, and progressively develop athletes' stunting ability throughout the season.",
       },
       {
         type: "bullet",
         items: [
-          "Used during the building phase of the season (early to mid-season).",
-          "Dedicated 30-minute block structured across Plyometrics, Isometrics, and Repetitions.",
-          "Designed to build jump height, technique, and consistency from the ground up.",
-          "All drills are run on an 8-count choreographed track — no free-form reps.",
-          "Coaches must actively lead, count, and correct throughout the entire block.",
-          "This system is the foundation — athletes who master this phase carry that quality into the maintenance phase.",
-        ],
-      },
-      {
-        type: "section_label",
-        text: "6.4B  OPTION 2: THE 5-5-5 MAINTENANCE SYSTEM (Maintenance Phase)",
-      },
-      {
-        type: "body",
-        text: "The 5-5-5 Maintenance System is used during the maintenance phase of the season. Once the season is underway, the goal is no longer to build — it is to maintain. Jump training is condensed into a simple 5-5-5 structure: 5 minutes of Plyometrics, 5 minutes of Isometrics, and 5 minutes of Repetitions. This keeps jumps sharp without stealing time from routines, stunts, or tumbling. Maintenance is what allows jumps to stay consistent late in the season, when most teams see decline.",
-      },
-      {
-        type: "bullet",
-        items: [
-          "Used during the maintenance phase of the season (mid-season through competition season).",
-          "5 minutes Plyometrics + 5 minutes Isometrics + 5 minutes Repetitions = 15-minute total block.",
-          "Designed to preserve jump quality already built during the Foundation phase.",
-          "All drills remain on the 8-count choreographed track — same structure, condensed time.",
-          "Coaches must maintain the same energy and standards as the Foundation System — shorter does not mean less focused.",
-          "Do not skip the 5-5-5 because the season is busy — this is exactly when it matters most.",
-        ],
-      },
-      {
-        type: "bullet",
-        items: [
-          "MINIMUM REQUIREMENT: The jump system (either option) must be completed at least once per week.",
-          "The choice of system is determined by the current phase of the season — not by coach preference or convenience.",
-          "Jump performance must be tracked and documented as part of athlete development progress in the EOD report.",
+          "Stunt drills/warm-up is mandatory at every practice — no exceptions.",
+          "Drills must be structured and progressive — not just open stunt time.",
+          "Coaches must actively spot, correct, and provide real-time feedback during stunt drills.",
+          "All athletes must participate in stunt drills at their appropriate level and role.",
+          "Coaches must document stunt progress in their EOD reports.",
+          "Safety protocols must be strictly followed during all stunting activities.",
+          "MINIMUM REQUIREMENT: Stunt drills/warm-up must be completed at every practice.",
         ],
       },
       {
@@ -736,81 +689,11 @@ Time off is not considered approved until it has passed through all three levels
       },
       {
         type: "section_label",
-        text: "10.3  SCHEDULED GYM CLOSURES & HOLIDAYS",
+        text: "10.3  TIME OFF BLACKOUT PERIODS",
       },
       {
         type: "body",
-        text: "Rio Elite observes the following scheduled gym closures each year. These are program-wide closures — no PTO is required for these periods. All staff are expected to be aware of these dates at the start of each season.",
-      },
-      {
-        type: "section_label",
-        text: "Program Scheduled Closures",
-      },
-      {
-        type: "bullet",
-        items: [
-          "4th of July Week — Full week closure (early July)",
-          "Spring Break Week — Full week closure (March/April, aligned with local school district)",
-          "Thanksgiving Week — Full week closure (late November)",
-          "Christmas / New Year Break — 2 full weeks closure (late December through early January)",
-        ],
-      },
-      {
-        type: "section_label",
-        text: "Federal Holidays Observed",
-      },
-      {
-        type: "body",
-        text: "In addition to program closures, Rio Elite observes the following federal holidays. The gym will be closed on these days and no practices or events will be scheduled. These days are paid for all salaried staff and all non-salaried All Star coaches.",
-      },
-      {
-        type: "bullet",
-        items: [
-          "New Year's Day — January 1",
-          "Martin Luther King Jr. Day — 3rd Monday in January",
-          "Memorial Day — Last Monday in May",
-          "Juneteenth National Independence Day — June 19",
-          "Independence Day — July 4",
-          "Labor Day — 1st Monday in September",
-          "Thanksgiving Day — 4th Thursday in November",
-          "Christmas Day — December 25",
-        ],
-      },
-      {
-        type: "body",
-        text: "Compensation during all scheduled closures and federal holidays: All salaried staff and non-salaried All Star coaches are paid at their normal rate for these periods. Other hourly staff are not compensated during gym closures.",
-      },
-      {
-        type: "section_label",
-        text: "10.4  PTO ACCRUAL POLICY",
-      },
-      {
-        type: "body",
-        text: "In addition to scheduled gym closures, all coaching staff accrue Paid Time Off (PTO) based on their years of service with Rio Elite. PTO is intended for personal days, appointments, or additional time away beyond scheduled closures. PTO does not roll over at the end of each season — unused days are forfeited. There is no cash payout for unused PTO.",
-      },
-      {
-        type: "two_col",
-        left: "0–1 Year (after 90-day probation)",
-        right: "1 PTO Day per season",
-      },
-      {
-        type: "two_col",
-        left: "1–2 Years",
-        right: "2 PTO Days per season",
-      },
-      {
-        type: "two_col",
-        left: "2–4 Years",
-        right: "3 PTO Days per season",
-      },
-      {
-        type: "two_col",
-        left: "4+ Years",
-        right: "5 PTO Days per season",
-      },
-      {
-        type: "body",
-        text: "PTO compensation: Salaried staff are paid at their normal rate. Hourly staff are paid based on their average regular coaching hours from the prior 4 weeks (private lesson hours excluded). PTO requests must follow the Time Off Request Process outlined in Section 10.2. Blackout periods apply — PTO may not be used during competition season (November–April) or any mandatory program events. Emergency and bereavement situations are reviewed on a case-by-case basis by the All Star Director.",
+        text: "Certain periods of the year are designated as blackout periods during which time off requests will not be approved except in documented emergency or bereavement situations. Blackout periods include competition season (November–April) and all mandatory program events. Emergency and bereavement situations are reviewed on a case-by-case basis by the All Star Director.",
       },
     ],
   },
@@ -900,32 +783,27 @@ Time off is not considered approved until it has passed through all three levels
         type: "bonus_table",
         rows: [
           {
-            amount: "$100.00",
+            amount: "$50.00",
             description: "Major National Championship Bonus",
             notes: "Awarded for winning a major national title. To qualify, the win cannot be uncontested — competition must be present in the division.",
           },
           {
-            amount: "$250.00 ⚑",
-            description: "The Summit Bonus (PENDING FINAL APPROVAL)",
-            notes: "⚑ UNDER DISCUSSION — amount and qualification criteria not yet finalized. Do not communicate to staff until confirmed.",
+            amount: "$100.00",
+            description: "The Summit Bonus",
+            notes: "Awarded for qualifying and competing at The Summit. Coach must be in good standing and the team must compete (not withdraw) to qualify.",
           },
           {
-            amount: "$50.00",
+            amount: "$25.00",
             description: "Bid Bonus — Wildcard / At-Large",
             notes: "Base bid bonus awarded for earning a Wildcard or At-Large bid. Bids cannot be handed down — they must be earned through competition.",
           },
           {
-            amount: "+$25.00",
-            description: "Bid Bonus — Partial Paid (Upgrade)",
-            notes: "Additional $25 awarded when the bid is upgraded to a Partial Paid bid. Stacks with the base $50 Wildcard/At-Large bonus. Total: $75.",
+            amount: "$50.00",
+            description: "Bid Bonus — Partial / Paid Bid",
+            notes: "Awarded when the team earns a Partial or Full Paid bid. Bids cannot be handed down — they must be earned through competition.",
           },
           {
-            amount: "+$25.00",
-            description: "Bid Bonus — Full Paid (Upgrade)",
-            notes: "Additional $25 awarded when the bid is further upgraded to a Full Paid bid. Stacks with all prior bid bonuses. Total potential: $100.",
-          },
-          {
-            amount: "$150.00",
+            amount: "$100.00",
             description: "Retention Rate Bonus",
             notes: "Awarded per coach who meets or exceeds an 85% athlete retention rate at end of season. Retention is calculated based on returning athletes from the prior season. Coach must meet the 85% threshold to qualify — no exceptions.",
           },
@@ -957,11 +835,6 @@ Time off is not considered approved until it has passed through all three levels
         text: "In order for a coaching position at Rio Elite to exist, the following benchmarks must be met each season. These milestones are not suggestions — they are the minimum performance standards expected of every team coach. Missing milestones without documented justification will result in a $50.00 deduction per occurrence.",
       },
       {
-        type: "link",
-        label: "View the Full Interactive Season Roadmap",
-        url: "https://cheerroadmap-h889m6ur.manus.space",
-      },
-      {
         type: "section_label",
         text: "12.1  SEASON BENCHMARK TIMELINE",
       },
@@ -989,7 +862,7 @@ Time off is not considered approved until it has passed through all three levels
         items: [
           "Measurable skill improvement must be demonstrated by your team throughout the year.",
           "Reasonable end-of-year retention rate, which must not fall below 75%.",
-          "Consistent execution of all non-negotiable practice systems (H.I.I.T., stretch, tumbling drills, jump system).",
+          "Consistent execution of all non-negotiable practice systems (H.I.I.T., stretch, tumbling drills, stunt drills/warm-up).",
           "Timely submission of all practice plans and EOD reports.",
           "Active and professional parent communication.",
           "Attendance at all staff meetings and program events.",
@@ -1383,7 +1256,25 @@ Time off is not considered approved until it has passed through all three levels
           "Confidentiality obligations begin on your first day of employment and continue after your employment ends.",
           "You may not use confidential information for personal gain or to benefit any competing program.",
           "You may not share confidential information with former colleagues, competing programs, or any unauthorized party.",
-          "Violations of the confidentiality agreement may result in legal action under the Florida Uniform Trade Secrets Act.",
+          "Violations of the confidentiality agreement may result in legal action under applicable state and federal trade secrets law.",
+        ],
+      },
+      {
+        type: "section_label",
+        text: "19.3  NON-COMPETE AGREEMENT",
+      },
+      {
+        type: "body",
+        text: "As a condition of employment, all Rio Elite coaching staff agree to the following non-compete terms. This agreement is designed to protect the program's investment in staff development, athlete relationships, and proprietary systems.",
+      },
+      {
+        type: "bullet",
+        items: [
+          "For a period of one (1) year following the end of employment with Rio Elite — for any reason — the coach agrees not to work for, coach at, consult with, or otherwise provide services to any similar cheerleading or all-star cheer entity located within fifty (50) miles of any Rio Elite facility.",
+          "\"Similar entity\" includes any all-star cheerleading gym, competitive cheer program, or organization that directly competes for the same athlete population as Rio Elite.",
+          "This restriction applies regardless of whether the coach's departure was voluntary or involuntary.",
+          "Violation of this non-compete may result in legal action and the pursuit of damages by Rio Elite.",
+          "If any portion of this non-compete is found to be unenforceable, the remaining provisions shall remain in full effect.",
         ],
       },
     ],
@@ -1404,7 +1295,6 @@ Time off is not considered approved until it has passed through all three levels
       {
         type: "bullet",
         items: [
-        
           "Coaches may only offer private lessons to athletes currently enrolled in the Rio Elite program.",
           "Private lessons must be conducted at a Rio Elite facility during approved hours.",
           "Coaches may not conduct private lessons at competing facilities or in private residences.",
